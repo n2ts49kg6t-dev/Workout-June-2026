@@ -114,7 +114,7 @@ input{font-family:inherit}
   <div class="tabs">
     <button class="tab on" onclick="switchTab('routine',this)">📋 Routine</button>
     <button class="tab" onclick="switchTab('fatloss',this)">🔥 Fat Loss</button>
-    <button class="tab" onclick="switchTab('traps',this)">💪 Traps</button>
+
   </div>
 </div>
 
@@ -123,10 +123,7 @@ input{font-family:inherit}
   <!-- ROUTINE TAB -->
   <div id="t-routine">
     <div class="day-grid" id="day-grid"></div>
-    <div class="legend">
-      <span><span class="tag t-NEW">NEW</span> Added exercise</span>
-      <span><span class="tag t-TRAP">TRAP</span> Upper trap focus</span>
-    </div>
+
     <div class="ex-list" id="ex-list"></div>
   </div>
 
@@ -145,22 +142,7 @@ input{font-family:inherit}
     </div>
   </div>
 
-  <!-- TRAPS TAB -->
-  <div id="t-traps" style="display:none">
-    <div class="info-stack">
-      <div class="ic">
-        <div class="ic-body">Upper traps respond best to <strong>heavy loaded elevation</strong> (shrugs), <strong>high-elbow pulls</strong> (face pulls, upright rows), and <strong>isometric tension</strong> (carries). All three are in your programme on Day 1 and Day 4.</div>
-      </div>
-      <div class="ic indigo-card"><div class="badge-row"><span style="font-size:14px;font-weight:700;color:#111827">Barbell / DB Shrug</span><span class="day-badge">Day 1</span></div><div class="tip-body">Highest load capacity = most mechanical tension. Hold 1–2s at top, full depression at bottom.</div></div>
-      <div class="ic indigo-card"><div class="badge-row"><span style="font-size:14px;font-weight:700;color:#111827">Cable Face Pull</span><span class="day-badge">Day 1</span></div><div class="tip-body">Upper trap + rear delt + rotator cuff. Elbows high, pull rope to forehead. Essential for shoulder health.</div></div>
-      <div class="ic indigo-card"><div class="badge-row"><span style="font-size:14px;font-weight:700;color:#111827">Dumbbell Upright Row</span><span class="day-badge">Day 4</span></div><div class="tip-body">Full upper trap ROM with medial delt synergy. Elbows above hands throughout the lift.</div></div>
-      <div class="ic indigo-card"><div class="badge-row"><span style="font-size:14px;font-weight:700;color:#111827">Farmer's Walks (optional)</span><span class="day-badge">Any</span></div><div class="tip-body">Isometric trap contraction under load — grab heaviest DBs, walk 40m. Incredibly effective.</div></div>
-      <div class="ic amber-card">
-        <div class="ic-title amber">💡 Programming note</div>
-        <div class="ic-body">Upper traps recover fast — hitting them Day 1 and Day 4 with rest between is optimal. Full ROM on shrugs is critical: most people half-rep and miss the lower-trap stretch that drives growth.</div>
-      </div>
-    </div>
-  </div>
+
 
 </div>
 
@@ -245,13 +227,9 @@ const DAYS = [
         form:{ setup:"Cable at lowest. Rope attachment. Face away from stack, rope behind head, palms inward. Elbows pointing at the ceiling.", exec:"Extend both arms overhead to full lockout. Elbows stay forward — don't let them flare. Lower slowly, feel the deep stretch in the tricep.", cues:["Elbows point up and stay there","Feel the stretch in the back of the arm at the bottom","Full lockout at the top"], avoid:"Elbows flaring wide — becomes a shoulder exercise. Too heavy, losing the position." },
         sets:[{r:"10 reps",rest:"60 secs"},{r:"10 reps",rest:"60 secs"},{r:"10 reps",rest:"End"}] },
 
-      { name:"Close Grip Press Ups (to failure)", note:"Tricep & inner chest finisher", tags:[], weight:"BW", unit:"",
-        form:{ setup:"Hands fist-width apart on the floor. Fingers forward. Straight line head to heel. Core braced.", exec:"Lower chest to floor, elbows tracking back (they should brush your ribcage). Press to full lockout. Go to complete failure.", cues:["Elbows close to body throughout","Rigid plank — no hips sagging or shooting up","Full ROM — chest to floor, full lockout"], avoid:"Hands too close or too far. Elbows flaring wide." },
-        sets:[{r:"Max reps",rest:"60 secs"},{r:"Max reps",rest:"60 secs"},{r:"Max reps",rest:"End"}] },
-
-      { name:"Tricep V Pull Down", note:"Pump finisher — lighter weight, chase the contraction", tags:[], weight:"27", unit:"kg",
-        form:{ setup:"Same as the cable pulldown. Drop the weight — this is metabolic work, not strength.", exec:"Slow every rep right down. 2 sec down, 1 sec squeeze at lockout, 2 sec up. Feel the muscle, not the movement. Go to failure on last set.", cues:["This is about the pump — slow tempo","Squeeze hard at the bottom every rep","Failure on the last set"], avoid:"Going heavy here. Sloppy form at the end of a session." },
-        sets:[{r:"12 reps",rest:"30 secs"},{r:"12 reps",rest:"30 secs"},{r:"12 reps",rest:"30 secs"},{r:"Max reps",rest:"End"}] },
+      { name:"Machine Tricep Dip", note:"Compound tricep finisher — full ROM, go heavy", tags:[], weight:"50", unit:"kg",
+        form:{ setup:"Sit in the dip machine with your back flat against the pad. Grip the handles at the sides, elbows bent at the start. Feet flat on the footrest. The machine supports your bodyweight so you can focus entirely on the triceps.", exec:"Press the handles down by extending the elbows to full lockout — squeeze hard at the bottom. Return slowly under control until elbows are back at roughly 90°. Don't let the weight stack touch between reps.", cues:["Full lockout at the bottom — that's where the tricep fully contracts","Slow on the return — 2–3 seconds back up","Keep the back pressed against the pad throughout","No weight stack touch between reps — constant tension"], avoid:"Partial reps — the lockout is the whole point. Letting the weight crash back up. Leaning the torso forward." },
+        sets:[{r:"10 reps",rest:"60 secs"},{r:"10 reps",rest:"60 secs"},{r:"10 reps",rest:"60 secs"},{r:"Max reps",rest:"End"}] },
     ]
   },
 
@@ -370,7 +348,7 @@ function hexAlpha(hex, a) {
 //  TAB SWITCHING
 // ─────────────────────────────────────────────
 function switchTab(id, btn) {
-  ['routine','fatloss','traps'].forEach(t => {
+  ['routine','fatloss'].forEach(t => {
     document.getElementById('t-'+t).style.display = t===id ? '' : 'none';
   });
   document.querySelectorAll('.tab').forEach(b => b.classList.toggle('on', b===btn));
@@ -500,7 +478,7 @@ function renderExercises() {
     return `
     <div class="card${isNew?' new-card':''}" style="--c:${c}">
       <div class="card-hdr">
-        ${tagHTML?`<div class="card-tags">${tagHTML}</div>`:''}
+
         <div class="name-row" onclick="toggleForm(${day.id},${ei})">
           <div class="ex-name">${ex.name}</div>
           <button class="form-btn${fOpen?' open':''}" id="fb-${day.id}-${ei}" style="--c:${c}">${fOpen?'▲ FORM':'▼ FORM'}</button>
